@@ -1,0 +1,7 @@
+1. For Slave 2 the PENABLE was high for SETUP phase changed it from high to low.
+2. The size of memory for mem2 was of 64 bit but it should be 256 bit for all the all the address locations.
+3. For Slave 1 the PENABLE was high for SETUP phase changed it from high to low.
+4. The size of memory for mem was of 64 bit but it should be 256 bit for all the all the address locations.
+5. The design states that if the transfer is high the next_state should be idle but it is the opposite if transfer is low the next_state should be IDLE
+6.A condition in the master stating that if transfer is high and slave error is high then the next state will be enable but it is not true if slave error is low then the next state will be ENABLE.
+7.The condition of slave selection was wrong it in the master , it should be if state != idle then the 9nth bit of address should be assigned to PSEL1 &PSEL2 , but it was error stating state == idle.
