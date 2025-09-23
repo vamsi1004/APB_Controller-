@@ -31,7 +31,7 @@
 		state <= next_state; 
   end
 
-    always @(*)
+	  always @(*) // Chnaged the the sensitivity list as reset wasn't included 
 
   begin
 	if(!PRESETn)
