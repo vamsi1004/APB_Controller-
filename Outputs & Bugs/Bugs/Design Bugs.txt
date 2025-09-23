@@ -5,3 +5,4 @@
 5. The design states that if the transfer is high the next_state should be idle but it is the opposite if transfer is low the next_state should be IDLE
 6.A condition in the master stating that if transfer is high and slave error is high then the next state will be enable but it is not true if slave error is low then the next state will be ENABLE.
 7.The condition of slave selection was wrong it in the master , it should be if state != idle then the 9nth bit of address should be assigned to PSEL1 &PSEL2 , but it was error stating state == idle.
+8.IN APB_Master the combinational output logic has no reset signal in sensitivity list hence it is not considering reset condtion .  
