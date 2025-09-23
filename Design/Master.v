@@ -31,7 +31,7 @@
 		state <= next_state; 
   end
 
-  always @(state,transfer,PREADY)
+    always @(*)
 
   begin
 	if(!PRESETn)
@@ -54,9 +54,11 @@
 			    PENABLE =0;
 
 			    if(READ_WRITE) 
+                      // @(posedge PCLK)
 	                       begin   PADDR = apb_read_paddr; end
 			    else 
 			      begin   
+			          //@(posedge PCLK)
                                   PADDR = apb_write_paddr;
 				  PWDATA = apb_write_data;  end
 			    
@@ -88,7 +90,7 @@
 		              end
 		             else next_state = IDLE;
 			 end
-			                      
+                             
                        
                                  default: next_state = IDLE; 
                	endcase
@@ -104,7 +106,7 @@
 	     setup_error =0;
 	     invalid_read_paddr = 0;
 	     invalid_write_paddr = 0;
-	     invalid_write_paddr =0 ;
+	     invalid_write_data =0 ;
 	    end
         else
 	 begin	
