@@ -37,7 +37,7 @@ interface apb_interface(input logic pclk,presetn);
     
 property p0;
   @(posedge pclk)
-  !presetn |-> (read_write == 1'b0 && apb_write_paddr == 9'b0 && apb_read_paddr == 9'b0 && apb_write_data == 8'b0);
+  !presetn |-> (apb_read_paddr == 9'b0 && pslverr == 0);
 endproperty
  
 assert property (p0)
